@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22758" systemVersion="23B74" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="ExperimentModel" representedClassName="ExperimentModel" syncable="YES" codeGenerationType="class">
+        <attribute name="exComment" optional="YES" attributeType="String"/>
+        <attribute name="exDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="exIdea" optional="YES" attributeType="String"/>
+        <attribute name="exName" optional="YES" attributeType="String"/>
+        <attribute name="exStatus" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="RecipeModel" representedClassName="RecipeModel" syncable="YES" codeGenerationType="class">
+        <attribute name="reDescr" optional="YES" attributeType="String"/>
+        <attribute name="reIng" optional="YES" attributeType="String"/>
+        <attribute name="reName" optional="YES" attributeType="String"/>
+        <attribute name="reTemp" optional="YES" attributeType="String"/>
+        <attribute name="reTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="reTType" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="SaleModel" representedClassName="SaleModel" syncable="YES" codeGenerationType="class">
+        <attribute name="saDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="saName" optional="YES" attributeType="String"/>
+        <attribute name="saQuan" optional="YES" attributeType="String"/>
+        <attribute name="saRev" optional="YES" attributeType="String"/>
+    </entity>
+</model>
