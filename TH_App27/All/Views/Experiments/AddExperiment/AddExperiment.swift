@@ -94,6 +94,39 @@ struct AddExperiment: View {
                             .frame(maxWidth: .infinity)
                             .frame(height: 1)
                             .padding(.vertical, 5)
+                        
+                        Text("Temperatute")
+                            .foregroundColor(.black)
+                            .font(.system(size: 14, weight: .regular))
+                        
+                        HStack {
+                            
+                            ZStack(content: {
+                                
+                                Text("Enter")
+                                    .foregroundColor(.gray)
+                                    .font(.system(size: 15, weight: .regular))
+                                    .opacity(viewModel.exTemp.isEmpty ? 1 : 0)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                
+                                TextField("", text: $viewModel.exTemp)
+                                    .foregroundColor(Color.black)
+                                    .font(.system(size: 16, weight: .regular))
+                                
+                            })
+                         
+                            Spacer()
+                            
+                            Text("℃")
+                                .foregroundColor(.black)
+                                .font(.system(size: 16, weight: .regular))
+                        }
+                        
+                        Rectangle()
+                            .fill(Color.gray.opacity(0.5))
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 1)
+                            .padding(.vertical, 5)
                             
                             VStack(alignment: .leading, spacing: 14) {
                                 

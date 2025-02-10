@@ -32,7 +32,7 @@ struct RecDetail: View {
                             
                             withAnimation(.spring()) {
                                 
-                                viewModel.isAdd = false
+                                viewModel.isDetail = false
                             }
                             
                         }, label: {

@@ -6,6 +6,7 @@
         <attribute name="exIdea" optional="YES" attributeType="String"/>
         <attribute name="exName" optional="YES" attributeType="String"/>
         <attribute name="exStatus" optional="YES" attributeType="String"/>
+        <attribute name="exTemp" optional="YES" attributeType="String"/>
     </entity>
     <entity name="RecipeModel" representedClassName="RecipeModel" syncable="YES" codeGenerationType="class">
         <attribute name="reDescr" optional="YES" attributeType="String"/>

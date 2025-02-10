@@ -26,6 +26,7 @@ final class ExperimentsViewModel: ObservableObject {
     @Published var exComment: String = ""
     @Published var exDate: Date = Date()
     @Published var exStatus: String = ""
+    @Published var exTemp: String = ""
 
     @Published var experiments: [ExperimentModel] = []
     @Published var selectedExperiment: ExperimentModel?
@@ -40,7 +41,8 @@ final class ExperimentsViewModel: ObservableObject {
         loan.exComment = exComment
         loan.exDate = exDate
         loan.exStatus = exStatus
-
+        loan.exTemp = exTemp
+        
         CoreDataStack.shared.saveContext()
     }
 

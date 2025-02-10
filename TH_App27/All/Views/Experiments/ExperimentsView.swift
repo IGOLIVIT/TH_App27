@@ -76,43 +76,56 @@ struct ExperimentsView: View {
                                 
                                 ForEach(viewModel.experiments, id: \.self) { index in
                                 
-                                    HStack {
-
-                                        Image(index.exStatus ?? "")
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(width: 70)
+                                    Button(action: {
                                         
-                                        Text(index.exName ?? "")
-                                            .foregroundColor(.black)
-                                            .font(.system(size: 22, weight: .medium))
-
-                                        Spacer()
+                                        viewModel.selectedExperiment = index
                                         
-                                        VStack {
+                                        withAnimation(.spring()) {
                                             
-                                            Button(action: {
-                                                
-                                                viewModel.selectedExperiment = index
-                                                
-                                                withAnimation(.spring()) {
-                                                    
-                                                    viewModel.isDelete = true
-                                                }
-                                                
-                                            }, label: {
-                                                
-                                                Image(systemName: "trash")
-                                                    .foregroundColor(.red)
-                                                    .font(.system(size: 16, weight: .regular))
-                                            })
+                                            viewModel.isDetail = true
+                                        }
+                                        
+                                    }, label: {
+                                        
+                                        HStack {
+                                            
+                                            Image(index.exStatus ?? "")
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fit)
+                                                .frame(width: 70)
+                                            
+                                            Text(index.exName ?? "")
+                                                .foregroundColor(.black)
+                                                .font(.system(size: 22, weight: .medium))
                                             
                                             Spacer()
+                                            
+                                            VStack {
+                                                
+                                                Button(action: {
+                                                    
+                                                    viewModel.selectedExperiment = index
+                                                    
+                                                    withAnimation(.spring()) {
+                                                        
+                                                        viewModel.isDelete = true
+                                                    }
+                                                    
+                                                }, label: {
+                                                    
+                                                    Image(systemName: "trash")
+                                                        .foregroundColor(.red)
+                                                        .font(.system(size: 16, weight: .regular))
+                                                })
+                                                
+                                                Spacer()
+                                            }
                                         }
-                                    }
-                                    .padding()
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .background(RoundedRectangle(cornerRadius: 12).fill(Color("prim1")))
+                                        .padding()
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                        .background(RoundedRectangle(cornerRadius: 12).fill(Color("prim1")))
+                                        
+                                    })
                                 }
                             }
                         }
@@ -125,43 +138,55 @@ struct ExperimentsView: View {
                                 
                                 ForEach(viewModel.experiments.filter({($0.exStatus ?? "") == viewModel.currStatusForFilter}), id: \.self) { index in
                                 
-                                    HStack {
-
-                                        Image(index.exStatus ?? "")
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(width: 70)
+                                    Button(action: {
                                         
-                                        Text(index.exName ?? "")
-                                            .foregroundColor(.black)
-                                            .font(.system(size: 22, weight: .medium))
+                                        viewModel.selectedExperiment = index
                                         
-                                        Spacer()
-                                        
-                                        VStack {
+                                        withAnimation(.spring()) {
                                             
-                                            Button(action: {
-                                                
-                                                viewModel.selectedExperiment = index
-                                                
-                                                withAnimation(.spring()) {
-                                                    
-                                                    viewModel.isDelete = true
-                                                }
-                                                
-                                            }, label: {
-                                                
-                                                Image(systemName: "trash")
-                                                    .foregroundColor(.red)
-                                                    .font(.system(size: 16, weight: .regular))
-                                            })
+                                            viewModel.isDetail = true
+                                        }
+                                        
+                                    }, label: {
+                                        
+                                        HStack {
+
+                                            Image(index.exStatus ?? "")
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fit)
+                                                .frame(width: 70)
+                                            
+                                            Text(index.exName ?? "")
+                                                .foregroundColor(.black)
+                                                .font(.system(size: 22, weight: .medium))
                                             
                                             Spacer()
+                                            
+                                            VStack {
+                                                
+                                                Button(action: {
+                                                    
+                                                    viewModel.selectedExperiment = index
+                                                    
+                                                    withAnimation(.spring()) {
+                                                        
+                                                        viewModel.isDelete = true
+                                                    }
+                                                    
+                                                }, label: {
+                                                    
+                                                    Image(systemName: "trash")
+                                                        .foregroundColor(.red)
+                                                        .font(.system(size: 16, weight: .regular))
+                                                })
+                                                
+                                                Spacer()
+                                            }
                                         }
-                                    }
-                                    .padding()
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .background(RoundedRectangle(cornerRadius: 12).fill(Color("prim1")))
+                                        .padding()
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                        .background(RoundedRectangle(cornerRadius: 12).fill(Color("prim1")))
+                                    })
                                 }
                             }
                         }
@@ -278,6 +303,10 @@ struct ExperimentsView: View {
                 .offset(y: viewModel.isDelete ? 0 : UIScreen.main.bounds.height)
             }
         )
+        .sheet(isPresented: $viewModel.isDetail, content: {
+            
+            ExDetail(viewModel: viewModel)
+        })
     }
 }
 

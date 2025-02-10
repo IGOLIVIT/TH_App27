@@ -32,7 +32,7 @@ struct ExDetail: View {
                             
                             withAnimation(.spring()) {
                                 
-                                viewModel.isAdd = false
+                                viewModel.isDetail = false
                             }
                             
                         }, label: {
@@ -69,12 +69,24 @@ struct ExDetail: View {
                             
                             VStack(alignment: .leading, spacing: 14) {
                                 
+                                Text("Idea")
+                                    .foregroundColor(.black)
+                                    .font(.system(size: 16, weight: .semibold))
+                                
                                 Text(viewModel.selectedExperiment?.exIdea ?? "")
                                     .foregroundColor(.black)
                                     .font(.system(size: 16, weight: .regular))
+                                
+                                Text("\(viewModel.selectedExperiment?.exTemp ?? "") ℃")
+                                    .foregroundColor(.black)
+                                    .font(.system(size: 14, weight: .medium))
+                                    .padding(8)
+                                    .padding(.horizontal, 7)
+                                    .background(RoundedRectangle(cornerRadius: 5).fill(Color("prim3")))
                             }
                             .padding()
                             .frame(maxWidth: .infinity, alignment: .leading)
+                            .frame(height: 130)
                             .background(RoundedRectangle(cornerRadius: 10).fill(Color("prim1")))
                             
                             VStack(alignment: .trailing, spacing: 14) {
@@ -85,6 +97,7 @@ struct ExDetail: View {
                             }
                             .padding()
                             .frame(maxWidth: .infinity, alignment: .leading)
+                            .frame(height: 130)
                             .background(RoundedRectangle(cornerRadius: 10).fill(Color("prim1")))
                         }
                         
@@ -97,6 +110,20 @@ struct ExDetail: View {
                         .padding()
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .background(RoundedRectangle(cornerRadius: 10).fill(Color("prim1")))
+                        
+                        HStack {
+                            
+                            ForEach(viewModel.statuses, id: \.self) { index in
+
+                                Text(viewModel.selectedExperiment?.exStatus ?? "")
+                                        .foregroundColor(.black)
+                                        .font(.system(size: 15, weight: .regular))
+                                        .frame(maxWidth: .infinity)
+                                        .frame(height: 30)
+                                        .background(RoundedRectangle(cornerRadius: 7).fill(Color("prim2").opacity(viewModel.selectedExperiment?.exStatus ?? "" == index ? 1 : 0)))
+                            }
+                        }
+                        .background(RoundedRectangle(cornerRadius: 8).fill(Color("prim1")))
 
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
